@@ -1,0 +1,51 @@
+<div class="p-grid">
+    <!-- Heading -->
+    <div class="flex align-items-center heading">
+        <div class="col-6 title">
+            <h2>Restaurants <span *ngIf="totalRecord">({{totalRecord}})</span></h2>
+        </div>
+        <div class="col-6 text-right add-button">
+            <p-button label="Add Restaurant" (click)="addRestaurant()" />
+        </div>
+    </div>
+
+    <div class="p-col-12">
+        <p-table [responsive]="true" [value]="restaurants" [rows]="10" [paginator]="true"
+        [totalRecords]="totalRecord">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-restaurant>
+                <tr>
+                    <td title="{{ restaurant.name }}">{{ restaurant.name }}</td>
+                    <td title="{{ restaurant.phoneNumber }}">{{ restaurant.phoneNumber }}</td>
+                    <td title="{{ restaurant.email }}">{{ restaurant.email }}</td>
+                    <td title="{{ restaurant.location }}">{{ restaurant.location }}</td>
+                    <td>
+                        <i class="pi pi-pencil edit-icon" title="Edit" (click)="editRestaurant(restaurant)"></i>
+                        <i class="pi pi-trash delete-icon" title="Delete"
+                        (click)="deleteRestaurant(restaurant)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-dialog [header]="!selectedRestaurant? 'Add Restaurant' : 'Edit Restaurant'" [(visible)]="addRestaurantPopup" [responsive]="true" class="editable-popup">
+    <app-add-restaurant #addRestaurantForm></app-add-restaurant>
+    <p-footer>
+        <button type="button" pButton label="Clear" class="p-button-secondary" (click)="clearForm()"></button>
+        <button type="button" pButton label="Cancel" class="p-button-secondary cancel-button" (click)="closePopup()"></button>
+        <button type="button" pButton [label]="!selectedRestaurant? 'Save' : 'Update'" (click)="saveRestaurant()" [disabled]="addRestaurantForm.restaurantForm.invalid"></button>
+    </p-footer>
+</p-dialog>
+
+<p-toast />
+<p-confirmDialog></p-confirmDialog>

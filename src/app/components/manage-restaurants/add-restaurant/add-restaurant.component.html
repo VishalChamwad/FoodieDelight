@@ -1,0 +1,96 @@
+<form [formGroup]="restaurantForm">
+    <div class="grid">
+
+        <div class="col-12 lg:col-12 md:col-12 sm:col-12 form-field">
+            <div class="form-label">
+                <label for="name">Name</label>
+                <label class="asterisk">*</label>
+            </div>
+            <div class="form-control">
+                <input id="name" type="text" formControlName="name" pInputText>
+            </div>
+            <div class="form-errors" *ngIf="restaurantForm.controls.name.errors && (restaurantForm.controls.name.dirty || restaurantForm.controls.name.touched)">
+                <div [hidden]="!restaurantForm.controls.name.errors.required">
+                    Name is required.
+                </div>
+                <div [hidden]="!restaurantForm.controls.name.errors.maxlength">
+                  Name should have 50 character only.
+              </div>
+            </div>
+        </div>
+
+        <div class="col-12 lg:col-12 md:col-12 sm:col-12 form-field">
+            <div class="form-label">
+                <label for="phoneNumber">Phone Number</label>
+                <label class="asterisk">*</label>
+            </div>
+            <div class="form-control">
+                <input id="phoneNumber" type="text" formControlName="phoneNumber" pInputText>
+            </div>
+            <div class="form-errors" *ngIf="restaurantForm.controls.phoneNumber.errors && (restaurantForm.controls.phoneNumber.dirty || restaurantForm.controls.phoneNumber.touched)">
+              <div [hidden]="!restaurantForm.controls.phoneNumber.errors.required">
+                  Phone Number is required.
+              </div>
+              <div [hidden]="!restaurantForm.controls.phoneNumber.errors.pattern">
+                Phone Number should contain digit only.
+            </div>
+              <div [hidden]="!restaurantForm.controls.phoneNumber.errors.minlength || !restaurantForm.controls.phoneNumber.errors.maxlength">
+                Phone Number should contain 7 to 13 digit only.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 lg:col-12 md:col-12 sm:col-12 form-field">
+            <div class="form-label">
+                <label for="email">Email</label>
+                <label class="asterisk">*</label>
+            </div>
+            <div class="form-control">
+                <input id="email" type="text" formControlName="email" pInputText>
+            </div>
+            <div class="form-errors" *ngIf="restaurantForm.controls.email.errors && (restaurantForm.controls.email.dirty || restaurantForm.controls.email.touched)">
+              <div [hidden]="!restaurantForm.controls.email.errors.required">
+                  Email is required.
+              </div>
+              <div [hidden]="!restaurantForm.controls.email.errors.email">
+                Email is invalid.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 lg:col-12 md:col-12 sm:col-12 form-field">
+            <div class="form-label">
+                <label for="location">Address/Location</label>
+                <label class="asterisk">*</label>
+            </div>
+            <div class="form-control">
+                <input id="location" type="text" formControlName="location" pInputText>
+            </div>
+            <div class="form-errors" *ngIf="restaurantForm.controls.location.errors && (restaurantForm.controls.location.dirty || restaurantForm.controls.location.touched)">
+              <div [hidden]="!restaurantForm.controls.location.errors.required">
+                  Location is required.
+              </div>
+          </div>
+        </div>
+
+        <div class="col-12 lg:col-12 md:col-12 sm:col-12 form-field">
+            <div class="form-label">
+                <label for="description">Description</label>
+            </div>
+            <div class="form-control">
+                <textarea id="description" rows="5" formControlName="description" pInputTextarea></textarea>
+            </div>
+        </div>
+
+        <div class="col-12 lg:col-12 md:col-12 sm:col-12 form-field">
+            <div class="form-label">
+                <label for="note">Note</label>
+            </div>
+            <div class="form-control">
+                <textarea id="note" rows="5" formControlName="note" pInputTextarea></textarea>
+            </div>
+        </div>
+
+    </div>
+
+</form>
