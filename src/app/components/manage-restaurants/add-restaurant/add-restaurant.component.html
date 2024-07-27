@@ -34,7 +34,7 @@
               <div [hidden]="!restaurantForm.controls.phoneNumber.errors.pattern">
                 Phone Number should contain digit only.
             </div>
-              <div [hidden]="!restaurantForm.controls.phoneNumber.errors.minlength || !restaurantForm.controls.phoneNumber.errors.maxlength">
+              <div [hidden]="!restaurantForm.controls.phoneNumber.errors.minlength && !restaurantForm.controls.phoneNumber.errors.maxlength">
                 Phone Number should contain 7 to 13 digit only.
             </div>
           </div>
